@@ -6,3 +6,10 @@ edition = "2018"
 
 [dependencies]
 rocket = "0.4.0"
+serde = "*"
+serde_derive = "*"
+
+[dependencies.rocket_contrib]
+version = "*"
+default-features = false
+features = ["handlebars_templates"]
