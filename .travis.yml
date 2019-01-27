@@ -1,0 +1,11 @@
+language: rust
+rust:
+  - nightly
+matrix:
+  fast_finish: true
+
+before_script:
+   - rustup component add clippy --toolchain=nightly || cargo install --git https://github.com/rust-lang/rust-clippy/ --force clippy
+
+script:
+  - cargo +nightly clippy
