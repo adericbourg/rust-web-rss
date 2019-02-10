@@ -12,7 +12,7 @@ use std::env;
 use rocket_contrib::templates::Template;
 
 mod configuration;
-mod rss;
+mod podcast;
 
 #[cfg(test)]
 mod index_tests;
@@ -38,6 +38,6 @@ fn main() {
     let args: Vec<String> = env::args().collect();
     let configuration_file = &args[1];
     let configuration = configuration::load(configuration_file);
-    rss::fetch_data(configuration.subscriptions);
+    podcast::fetch_podcasts(configuration.subscriptions);
     rocket().launch();
 }
