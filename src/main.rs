@@ -2,17 +2,18 @@
 
 #[macro_use]
 extern crate rocket;
+extern crate rocket_contrib;
 #[macro_use]
 extern crate serde_derive;
-extern crate rocket_contrib;
 extern crate serde_yaml;
+
+use std::env;
+use std::fs;
+
+use rocket_contrib::templates::Template;
 
 #[cfg(test)]
 mod index_tests;
-
-use rocket_contrib::templates::Template;
-use std::env;
-use std::fs;
 
 #[derive(Serialize)]
 struct IndexContext {
