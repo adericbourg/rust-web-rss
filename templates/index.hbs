@@ -7,7 +7,37 @@
 </head>
 
 <body>
-    <h1>Hello world!</h1>
+
+<div>
+    <ul>
+        {{#each podcasts as |podcast|}}
+            <li><a href="#podcast-{{@index}}">{{podcast.name}}</a></li>
+        {{/each}}
+    </ul>
+</div>
+
+<h1>Podcasts</h1>
+
+{{#each podcasts as |podcast|}}
+    <h2 id="podcast-{{@index}}">{{podcast.name}}</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Title</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each podcast.items as |item|}}
+            <tr>
+                <td>{{item.published}}</td>
+                <td><a href="{{item.media_url}}">{{item.title}}</a></td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+{{/each}}
+
 </body>
 
 </html>

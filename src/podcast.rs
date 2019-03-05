@@ -4,11 +4,15 @@ use rss::Channel;
 
 use crate::configuration;
 
+#[derive(Debug)]
+#[derive(Serialize)]
 pub struct Podcast {
     pub name: String,
     pub items: Vec<PodcastItem>,
 }
 
+#[derive(Debug)]
+#[derive(Serialize)]
 pub struct PodcastItem {
     title: Option<String>,
     // TODO parse date
@@ -32,6 +36,5 @@ fn fetch(subscription: &configuration::Subscription) -> Podcast {
         name: channel_name,
         items: podcast_items,
     };
-
     podcast
 }
