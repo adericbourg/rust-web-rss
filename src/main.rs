@@ -30,7 +30,7 @@ struct IndexContext<'a> {
 #[get("/")]
 fn index(podcasts: State<Vec<Podcast>>) -> Template {
     Template::render("index", &IndexContext {
-        title: "Hello!",
+        title: "Podcasts",
         podcasts: podcasts.inner(),
     })
 }
