@@ -44,6 +44,10 @@ fn rocket(podcasts: Vec<Podcast>) -> rocket::Rocket {
 
 fn main() {
     let args: Vec<String> = env::args().collect();
+    if args.len() < 2 {
+        eprintln!("Missing configuration file as first argument");
+        ::std::process::exit(1);
+    }
     let configuration_file = &args[1];
     let configuration = configuration::load(configuration_file);
 
