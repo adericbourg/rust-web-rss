@@ -4,40 +4,53 @@
 <head>
     <meta charset="utf-8">
     <title>{{ title }}</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.3/dist/css/foundation.min.css"
+          integrity="sha256-xpOKVlYXzQ3P03j397+jWFZLMBXLES3IiryeClgU5og= sha384-gP4DhqyoT9b1vaikoHi9XQ8If7UNLO73JFOOlQV1RATrA7D0O7TjJZifac6NwPps sha512-AKwIib1E+xDeXe0tCgbc9uSvPwVYl6Awj7xl0FoaPFostZHOuDQ1abnDNCYtxL/HWEnVOMrFyf91TDgLPi9pNg=="
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.3/dist/js/foundation.min.js"
+            integrity="sha256-/PFxCnsMh+nTuM0k3VJCRch1gwnCfKjaP8rJNq5SoBg= sha384-9ksAFjQjZnpqt6VtpjMjlp2S0qrGbcwF/rvrLUg2vciMhwc1UJJeAAOLuJ96w+Nj sha512-UMSn6RHqqJeJcIfV1eS2tPKCjzaHkU/KqgAnQ7Nzn0mLicFxaVhm9vq7zG5+0LALt15j1ljlg8Fp9PT1VGNmDw=="
+            crossorigin="anonymous"></script>
+
 </head>
 
 <body>
+<div class="grid-container">
+    <h1>Podcasts</h1>
 
-<div>
-    <ul>
-        {{#each podcasts as |podcast|}}
-            <li><a href="#podcast-{{@index}}">{{podcast.name}}</a></li>
-        {{/each}}
-    </ul>
-</div>
+    <div class="card">
+        <div class="card-divider">
+            Content
+        </div>
+        <div class="card-section">
+            <ul>
+                {{#each podcasts as |podcast|}}
+                    <li><a href="#podcast-{{@index}}">{{podcast.name}}</a></li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
 
-<h1>Podcasts</h1>
-
-{{#each podcasts as |podcast|}}
-    <h2 id="podcast-{{@index}}">{{podcast.name}}</h2>
-    <table>
-        <thead>
-        <tr>
-            <th>Date</th>
-            <th>Title</th>
-        </tr>
-        </thead>
-        <tbody>
-        {{#each podcast.items as |item|}}
+    {{#each podcasts as |podcast|}}
+        <h2 id="podcast-{{@index}}">{{podcast.name}}</h2>
+        <table>
+            <thead>
             <tr>
-                <td>{{item.published}}</td>
-                <td><a href="{{item.media_url}}">{{item.title}}</a></td>
+                <th>Date</th>
+                <th>Title</th>
             </tr>
-        {{/each}}
-        </tbody>
-    </table>
-{{/each}}
-
+            </thead>
+            <tbody>
+            {{#each podcast.items as |item|}}
+                <tr>
+                    <td>{{item.published}}</td>
+                    <td><a href="{{item.media_url}}">{{item.title}}</a></td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    {{/each}}
+</div>
 </body>
 
 </html>
