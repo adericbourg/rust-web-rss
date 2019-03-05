@@ -23,7 +23,7 @@ mod index_tests;
 
 #[derive(Serialize)]
 struct IndexContext<'a> {
-    title: &'static str,
+    title: &'a str,
     podcasts: &'a Vec<Podcast>,
 }
 
