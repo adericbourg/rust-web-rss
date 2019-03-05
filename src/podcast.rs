@@ -1,5 +1,6 @@
 extern crate rss;
 
+use chrono::DateTime;
 use rss::Channel;
 
 use crate::configuration;
@@ -29,7 +30,7 @@ fn fetch(subscription: &configuration::Subscription) -> Podcast {
     let channel_name = String::from(channel.title());
     let podcast_items: Vec<PodcastItem> = channel.into_items().into_iter().map(|i| PodcastItem {
         title: i.title().map(|t| String::from(t)),
-        published: i.pub_date().map(|pd| String::from(pd)),
+        published: format_date(i.pub_date()),
         media_url: i.enclosure().map(|encl| String::from(encl.url())),
     }).collect();
     let podcast = Podcast {
@@ -37,4 +38,9 @@ fn fetch(subscription: &configuration::Subscription) -> Podcast {
         items: podcast_items,
     };
     podcast
+}
+
+fn format_date(maybe_date: Option<&str>) -> Option<String> {
+    maybe_date.map(|d| DateTime::parse_from_rfc2822(d).expect("Failed parsing published date"))
+        .map(|date| date.format("%Y-%m-%d").to_string())
 }

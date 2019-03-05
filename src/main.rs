@@ -7,6 +7,8 @@ extern crate rocket_contrib;
 extern crate serde_derive;
 extern crate serde_yaml;
 
+extern crate chrono;
+
 use std::env;
 
 use rocket::State;
